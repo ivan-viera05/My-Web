@@ -1,0 +1,427 @@
+<div id="cursor" class="cursor"></div>
+<div id="cursor-follower" class="cursor-follower"></div>
+
+<!-- Navbar -->
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="container nav-content">
+    <a href="#" class="logo text-logo" (click)="scrollToTop($event)">
+      Ivan<span class="logo-accent">TechX</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about" (click)="scrollToSection('about', $event)">{{ t.nav.about }}</a></li>
+      <li><a href="#experience" (click)="scrollToSection('experience', $event)">{{ t.nav.experience }}</a></li>
+      <li><a href="#skills" (click)="scrollToSection('skills', $event)">{{ t.nav.skills }}</a></li>
+      <li><a href="#projects" (click)="scrollToSection('projects', $event)">{{ t.nav.projects }}</a></li>
+      <li><a href="#education" (click)="scrollToSection('education', $event)">{{ t.nav.education }}</a></li>
+      <li><a href="#contact" (click)="scrollToSection('contact', $event)">{{ t.nav.contact }}</a></li>
+      <li class="lang-switch">
+        <button (click)="toggleLanguage()" class="lang-btn">
+          <span [class.active]="currentLang() === 'es'">ES</span>
+          <span class="separator">|</span>
+          <span [class.active]="currentLang() === 'en'">EN</span>
+        </button>
+      </li>
+    </ul>
+    <a href="https://wa.me/5491159891620" class="cta-button" target="_blank">{{ t.nav.cta }}</a>
+
+    <!-- Hamburger Button (mobile only) -->
+    <button class="hamburger" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" [class.open]="isMobileMenuOpen" (click)="closeMobileMenu()">
+  <div class="mobile-menu" (click)="$event.stopPropagation()">
+    <div class="mobile-menu-header">
+      <span class="logo text-logo" style="font-size: 1.2rem; cursor: pointer;" (click)="scrollToTop($event); closeMobileMenu()">Ivan<span class="logo-accent">TechX</span></span>
+      <button class="mobile-menu-close" (click)="closeMobileMenu()">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#about" (click)="scrollToSection('about', $event); closeMobileMenu()"><i class="ph ph-user"></i> {{ t.nav.about }}</a></li>
+      <li><a href="#experience" (click)="scrollToSection('experience', $event); closeMobileMenu()"><i class="ph ph-briefcase"></i> {{ t.nav.experience }}</a></li>
+      <li><a href="#skills" (click)="scrollToSection('skills', $event); closeMobileMenu()"><i class="ph ph-lightning"></i> {{ t.nav.skills }}</a></li>
+      <li><a href="#projects" (click)="scrollToSection('projects', $event); closeMobileMenu()"><i class="ph ph-code"></i> {{ t.nav.projects }}</a></li>
+      <li><a href="#education" (click)="scrollToSection('education', $event); closeMobileMenu()"><i class="ph ph-graduation-cap"></i> {{ t.nav.education }}</a></li>
+      <li><a href="#contact" (click)="scrollToSection('contact', $event); closeMobileMenu()"><i class="ph ph-envelope"></i> {{ t.nav.contact }}</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <button (click)="toggleLanguage()" class="lang-btn-mobile">
+        <span [class.active]="currentLang() === 'es'">ES</span>
+        <span class="separator">|</span>
+        <span [class.active]="currentLang() === 'en'">EN</span>
+      </button>
+      <a href="https://wa.me/5491159891620" class="cta-button" target="_blank" (click)="closeMobileMenu()">
+        {{ t.nav.cta }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <h2 class="reveal">{{ t.hero.greeting }}</h2>
+      <h1 class="reveal"><span class="gradient-text">Ivan Viera</span></h1>
+      <p class="reveal">{{ t.hero.subtitle }}</p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="primary-btn" (click)="scrollToSection('projects', $event)">{{ t.hero.viewProjects }}</a>
+        <a href="#experience" class="secondary-btn" (click)="scrollToSection('experience', $event)">{{ t.hero.experience }}</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.about.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-image-container reveal">
+          <div class="image-wrapper">
+            <img src="/miimagen.png" alt="Ivan Viera" class="profile-img">
+            <div class="image-glow"></div>
+            <div class="image-border"></div>
+          </div>
+          <div class="experience-badge glass-card">
+            <span class="number">4+</span>
+            <span class="text">{{ t.about.expBadge }}</span>
+          </div>
+        </div>
+        <div class="about-text-container reveal">
+          <div class="about-header">
+            <h3>{{ t.about.header }}</h3>
+            <p class="subtitle">{{ t.about.subtitle }}</p>
+          </div>
+          <div class="about-body">
+            <p [innerHTML]="t.about.p1"></p>
+            <p [innerHTML]="t.about.p2"></p>
+          </div>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <div class="info-icon"><i class="ph ph-map-pin"></i></div>
+              <div class="info-content">
+                <span class="label">{{ t.about.locationLabel }}</span>
+                <span class="value">{{ t.about.locationValue }}</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><i class="ph ph-graduation-cap"></i></div>
+              <div class="info-content">
+                <span class="label">{{ t.about.studiesLabel }}</span>
+                <span class="value">{{ t.about.studiesValue }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-actions">
+            <a href="#" class="primary-btn"><i class="ph ph-download-simple"></i> {{ t.about.downloadCV }}</a>
+            <div class="social-links-mini">
+              <a href="https://www.linkedin.com/in/ivan-viera-dev/" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+              <a href="#" target="_blank"><i class="ph ph-github-logo"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="additional-info-grid">
+        @for (card of t.about.cards; track card.title) {
+          <div class="info-card glass-card reveal">
+            <i [class]="'ph ' + ($index === 0 ? 'ph-briefcase' : ($index === 1 ? 'ph-users-three' : 'ph-lightning'))"></i>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.experience.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line">
+          <div class="timeline-progress-line" [style.height.%]="timelineProgress"></div>
+        </div>
+        @for (exp of experience; track $index) {
+          <div class="timeline-item reveal" [class.left]="$index % 2 === 0" [class.right]="$index % 2 !== 0">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="period">{{ exp.period }}</span>
+              <h3>{{ exp.role }}</h3>
+              <h4>{{ exp.company }}</h4>
+              <p>{{ exp.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.projects.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="projects-carousel-wrapper"
+        (touchstart)="onCarouselTouchStart($event)"
+        (touchend)="onCarouselTouchEnd($event)">
+        <button class="carousel-btn prev" (click)="prevProjectSlide()">
+          <i class="ph ph-caret-left"></i>
+        </button>
+        <div class="projects-carousel-container">
+          <div class="projects-track" [style.transform]="'translateX(-' + (currentProjectSlide * (100 / visibleCards)) + '%)'" >
+            @for (project of projects; track $index) {
+              <div class="project-slide" [style.flex]="'0 0 ' + (100 / visibleCards) + '%'">
+                <div class="project-card glass-card reveal" (click)="openProjectModal(project)">
+                  <div class="project-image">
+                    <img [src]="project.image" [alt]="project.title">
+                    <div class="project-overlay">
+                      <span class="view-details">Ver Detalles</span>
+                    </div>
+                  </div>
+                    <div class="project-info">
+                      <h3>{{ project.title }}</h3>
+                      <p>{{ project.description }}</p>
+                    </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+        <button class="carousel-btn next" (click)="nextProjectSlide()">
+          <i class="ph ph-caret-right"></i>
+        </button>
+      </div>
+      <div class="carousel-dots-main">
+        @for (dot of projectDots; track $index) {
+          <span class="dot-main" [class.active]="$index === currentProjectSlide" (click)="currentProjectSlide = $index"></span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.skills.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="bento-skills">
+        @for (category of skillCategories; track $index) {
+          <div class="skill-category glass-card reveal" [class]="'cat-' + $index">
+            <div class="cat-header">
+              <i [class]="category.icon"></i>
+              <h3>{{ category.name }}</h3>
+            </div>
+            <div class="tag-list">
+              @for (skill of category.skills; track skill) {
+                <span class="skill-tag">{{ skill }}</span>
+              }
+            </div>
+            <div class="cat-decoration"></div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.education.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="edu-cert-grid">
+        <div class="education-list">
+          <h3 class="reveal">{{ t.education.eduHeader }}</h3>
+          @for (edu of education; track $index) {
+            <div class="edu-card glass-card reveal">
+              <span class="period">{{ edu.period }}</span>
+              <h4>{{ edu.title }}</h4>
+              <p class="institution">{{ edu.institution }}</p>
+              <p>{{ edu.description }}</p>
+            </div>
+          }
+        </div>
+        <div class="certifications-list">
+          <h3 class="reveal">{{ t.education.certHeader }}</h3>
+          <div class="cert-grid">
+            @for (cert of certifications; track $index) {
+              <div class="cert-item glass-card reveal">
+                <i class="ph ph-certificate"></i>
+                <div class="cert-info">
+                  <h4>{{ cert.title }}</h4>
+                  <span class="date">{{ cert.date }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.contact.title }}</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="contact-content glass-card reveal">
+        <div class="contact-info">
+          <h3>{{ t.contact.header }}</h3>
+          <p>{{ t.contact.subtitle }}</p>
+          <div class="info-item">
+            <i class="ph ph-envelope"></i>
+            <span>ivanvieraosvaldo@gmail.com</span>
+          </div>
+          <div class="info-item">
+            <i class="ph ph-map-pin"></i>
+            <span>Buenos Aires, Argentina</span>
+          </div>
+        </div>
+        <form class="contact-form" (ngSubmit)="sendEmail($event)">
+          <input type="text" [(ngModel)]="contactData.name" name="name" [placeholder]="t.contact.namePlaceholder" required [disabled]="isSendingEmail">
+          <input type="email" [(ngModel)]="contactData.email" name="email" [placeholder]="t.contact.emailPlaceholder" required [disabled]="isSendingEmail">
+          <textarea [(ngModel)]="contactData.message" name="message" [placeholder]="t.contact.messagePlaceholder" rows="5" required [disabled]="isSendingEmail"></textarea>
+          
+          <button type="submit" class="submit-btn" [disabled]="isSendingEmail || !contactData.name || !contactData.email || !contactData.message">
+            <span *ngIf="!isSendingEmail">{{ t.contact.send }}</span>
+            <span *ngIf="isSendingEmail"><i class="ph ph-spinner ph-spin"></i> Enviando...</span>
+          </button>
+          
+          <!-- Mensajes de feedback -->
+          <div class="form-feedback success" *ngIf="emailSentSuccess">
+            <i class="ph ph-check-circle"></i> ¡Mensaje enviado con éxito! Te responderé pronto.
+          </div>
+          <div class="form-feedback error" *ngIf="emailSentError">
+            <i class="ph ph-warning-circle"></i> Hubo un error al enviar. Por favor, intenta por WhatsApp.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dino Game Section -->
+  <section id="game" class="game-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>{{ t.game.title }}</h2>
+        <div class="underline"></div>
+        <p class="subtitle">{{ t.game.subtitle }}</p>
+      </div>
+      <div class="game-container-wrapper glass-card reveal">
+        <div id="gameContenedor" class="contenedor" (touchstart)="onGameTouch($event)" (mousedown)="onGameTouch($event)">
+          <canvas id="gameCanvas"></canvas>
+          <div class="game-ui">
+            <div class="score">Puntos: {{ gameScore }}</div>
+            <div class="game-over" *ngIf="isGameOver">
+              <h3>GAME OVER</h3>
+              <button class="primary-btn" (click)="onResetGame($event)">{{ t.game.restart }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-controls">
+          <button class="primary-btn" (click)="onStartGame()" *ngIf="!gameActive && !isGameOver">{{ t.game.start }}</button>
+          <p><i class="ph ph-hand-tap"></i> Toca la pantalla o usa Espacio</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Ivan Viera. {{ t.footer.copy }}</p>
+    <div class="social-links">
+      <a href="https://github.com/ivan-viera05" target="_blank"><i class="ph ph-github-logo"></i></a>
+      <a href="https://www.linkedin.com/in/ivanviera/" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/5491159891620" class="whatsapp-float" target="_blank">
+  <i class="ph ph-whatsapp-logo"></i>
+</a>
+
+<!-- Project Modal -->
+<div class="project-modal" [class.open]="isModalOpen" *ngIf="selectedProject" (click)="closeProjectModal()">
+  <div class="modal-content glass-card" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeProjectModal()">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="modal-grid">
+      <div class="modal-image-section">
+        <div class="modal-main-image">
+          <video *ngIf="selectedProject.images[selectedProject.currentImageIndex].video" [src]="selectedProject.images[selectedProject.currentImageIndex].video" class="modal-video" controls autoplay muted loop></video>
+          <img *ngIf="!selectedProject.images[selectedProject.currentImageIndex].video" [src]="selectedProject.images[selectedProject.currentImageIndex].url" alt="Project Image">
+          <button class="modal-nav-btn prev" (click)="prevImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1"><i class="ph ph-caret-left"></i></button>
+          <button class="modal-nav-btn next" (click)="nextImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1"><i class="ph ph-caret-right"></i></button>
+        </div>
+        <div class="modal-thumbnails" *ngIf="selectedProject.images.length > 1">
+          @for (img of selectedProject.images; track $index) {
+            <div class="thumbnail" [class.active]="$index === selectedProject.currentImageIndex" (click)="selectedProject.currentImageIndex = $index">
+              <img [src]="img.url || selectedProject.image" alt="Thumbnail">
+            </div>
+          }
+        </div>
+      </div>
+      <div class="modal-info-section">
+        <div class="modal-header">
+          <div class="project-tags">
+            @for (tag of selectedProject.tags; track tag) { <span class="tag">{{ tag }}</span> }
+          </div>
+          <h2>{{ selectedProject.title }}</h2>
+        </div>
+        <div class="project-full-description" *ngIf="selectedProject.fullDescription">
+          <p style="white-space: pre-line; margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; border-left: 2px solid var(--accent-primary); padding-left: 1rem;">{{ selectedProject.fullDescription }}</p>
+        </div>
+        <div class="image-detail" *ngIf="selectedProject.images[selectedProject.currentImageIndex].description">
+          <h3>{{ selectedProject.images[selectedProject.currentImageIndex].title }}</h3>
+          <p>{{ selectedProject.images[selectedProject.currentImageIndex].description }}</p>
+        </div>
+        <div class="project-results" *ngIf="selectedProject.results">
+          <h3>{{ t.projects.modal.metrics }}</h3>
+          <div class="results-grid">
+            <div class="result-item"><span class="res-value">{{ selectedProject.results.efficiency }}</span><span class="res-label">{{ t.projects.modal.efficiency }}</span></div>
+            <div class="result-item"><span class="res-value">{{ selectedProject.results.response }}</span><span class="res-label">{{ t.projects.modal.responseTime }}</span></div>
+            <div class="result-item"><span class="res-value">{{ selectedProject.results.accuracy }}</span><span class="res-label">{{ t.projects.modal.accuracy }}</span></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-links">
+            <a [href]="selectedProject.link" class="primary-btn" target="_blank" *ngIf="selectedProject.link !== '#'">{{ t.projects.modal.viewDemo }}</a>
+            <a [href]="selectedProject.repo" class="secondary-btn" target="_blank" *ngIf="selectedProject.repo !== '#'">
+              <i class="ph ph-github-logo"></i> {{ t.projects.modal.viewCode }}
+            </a>
+            <a [href]="selectedProject.youtubeUrl" class="secondary-btn youtube" target="_blank" *ngIf="selectedProject.youtubeUrl">
+              <i class="ph ph-youtube-logo"></i> Video
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
