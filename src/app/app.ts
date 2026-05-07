@@ -441,6 +441,17 @@ export class AppComponent implements OnInit {
     this.emailSentSuccess = false;
     this.emailSentError = false;
 
+    // Obtener token de reCAPTCHA
+    let recaptchaResponse = '';
+    if (typeof (window as any).grecaptcha !== 'undefined') {
+      recaptchaResponse = (window as any).grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert(this.currentLang() === 'es' ? 'Por favor, confirma que no eres un robot.' : 'Please confirm you are not a robot.');
+        this.isSendingEmail = false;
+        return;
+      }
+    }
+
     // Usa las credenciales desde el archivo de entorno (.env equivalente en Angular)
     const serviceID = environment.emailjs.serviceId;
     const templateID = environment.emailjs.templateId;
@@ -451,7 +462,8 @@ export class AppComponent implements OnInit {
       from_name: this.contactData.name,
       reply_to: this.contactData.email,
       message: this.contactData.message,
-      to_name: 'Ivan'
+      to_name: 'Ivan',
+      'g-recaptcha-response': recaptchaResponse
     };
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
@@ -459,10 +471,16 @@ export class AppComponent implements OnInit {
         this.isSendingEmail = false;
         this.emailSentSuccess = true;
         this.contactData = { name: '', email: '', message: '' };
+        if (typeof (window as any).grecaptcha !== 'undefined') {
+          (window as any).grecaptcha.reset();
+        }
         setTimeout(() => this.emailSentSuccess = false, 5000);
       }, (error) => {
         this.isSendingEmail = false;
         this.emailSentError = true;
+        if (typeof (window as any).grecaptcha !== 'undefined') {
+          (window as any).grecaptcha.reset();
+        }
         setTimeout(() => this.emailSentError = false, 5000);
       });
   }
