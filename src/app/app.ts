@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         { name: 'APIs & Arquitectura', icon: 'ph ph-tree-structure', skills: ['APIs REST', 'JWT', 'Swagger', 'Microservicios', 'Arquitectura en capas', 'Arquitectura hexagonal', 'WebSockets', 'Microfrontend'] },
         { name: 'Gestión & DevOps', icon: 'ph ph-gear', skills: ['BPM Camunda', 'BPMN', 'Scrum', 'Git', 'GitHub', 'BitBucket', 'Docker'] },
         { name: 'Bases de Datos', icon: 'ph ph-database', skills: ['SQL SERVER', 'PostgreSQL'] },
-        { name: 'Testing', icon: 'ph ph-bug-beetle', skills: ['Postman', 'Testing funcional', 'Test unitario'] }
+        { name: 'Testing', icon: 'ph ph-bug-beetle', skills: ['Postman', 'Testing funcional', 'Test unitario', 'Kali Linux'] }
       ],
       experience: [
         { company: 'Proyecto - Agendifly', role: 'Full Stack Developer', period: 'Julio 2025 – Enero 2026', description: 'Desarrollé un sistema de gestión de turnos full-stack con backend .NET y frontend Angular, diseñando APIs REST con autenticación/roles y lógica de negocio. Modelé la base de datos y migraciones con EF Core, incorporé validaciones y manejo de errores, e integré pagos y gestión de suscripciones con Mercado Pago, además de optimizar rendimiento y seguridad mediante caching, rate limiting y validación.' },
@@ -68,7 +68,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         { title: 'Udemy “Desarrollo C# .NET avanzado”', date: '2024' },
         { title: 'Udemy “Desarrollando Aplicaciones en Angular 19 y ASP.NET Core 9”', date: '2024' },
         { title: 'Udemy “Mastering HTML5”', date: '2024' },
-        { title: 'Udemy “Desarrollo De sistemas Market C#”', date: '2024' }
+        { title: 'Udemy “Desarrollo De sistemas Market C#”', date: '2024' },
+        { title: 'Pentesting en Webs', date: '2025' }
       ],
       languages: [
         { name: 'Español', level: 'Nativo' },
@@ -183,7 +184,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         { name: 'APIs & Architecture', icon: 'ph ph-tree-structure', skills: ['REST APIs', 'JWT', 'Swagger', 'Microservices', 'Layered Architecture', 'Hexagonal Architecture', 'WebSockets', 'Microfrontend'] },
         { name: 'Management & DevOps', icon: 'ph ph-gear', skills: ['BPM Camunda', 'BPMN', 'Scrum', 'Git', 'GitHub', 'BitBucket', 'Docker'] },
         { name: 'Databases', icon: 'ph ph-database', skills: ['SQL SERVER', 'PostgreSQL'] },
-        { name: 'Testing', icon: 'ph ph-bug-beetle', skills: ['Postman', 'Functional Testing', 'Unit Testing'] }
+        { name: 'Testing', icon: 'ph ph-bug-beetle', skills: ['Postman', 'Functional Testing', 'Unit Testing', 'Kali Linux'] }
       ],
       experience: [
         { company: 'Project - Agendifly', role: 'Full Stack Developer', period: 'July 2025 – January 2026', description: 'Developed a full-stack appointment management system with .NET backend and Angular frontend, designing REST APIs with authentication/roles and business logic. Modeled the database and migrations with EF Core, incorporated validations and error handling, and integrated payments and subscription management with Mercado Pago, in addition to optimizing performance and security through caching, rate limiting, and validation.' },
@@ -202,7 +203,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         { title: 'Udemy “Advanced C# .NET Development”', date: '2024' },
         { title: 'Udemy “Developing Applications in Angular 19 and ASP.NET Core 9”', date: '2024' },
         { title: 'Udemy “Mastering HTML5”', date: '2024' },
-        { title: 'Udemy “Market Systems Development C#”', date: '2024' }
+        { title: 'Udemy “Market Systems Development C#”', date: '2024' },
+        { title: 'Web Pentesting', date: '2025' }
       ],
       languages: [
         { name: 'Spanish', level: 'Native' },
