@@ -384,7 +384,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (container && !container.innerHTML.trim()) {
         try {
           (window as any).grecaptcha.render('recaptcha-container', {
-            'sitekey': '6LcK-t4sAAAAAB_ADSe-aTMUejCyakz-4Fhj_64o'
+            'sitekey': '6LdL-94sAAAAAJt7t-P2zB6Sf1-ux4wbSkqiieAS'
           });
         } catch (e) {
           console.error('Error al renderizar reCAPTCHA:', e);
