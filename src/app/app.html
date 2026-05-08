@@ -304,7 +304,7 @@
           <input type="email" [(ngModel)]="contactData.email" name="email" [placeholder]="t.contact.emailPlaceholder" required [disabled]="isSendingEmail">
           <textarea [(ngModel)]="contactData.message" name="message" [placeholder]="t.contact.messagePlaceholder" rows="5" required [disabled]="isSendingEmail"></textarea>
           
-          <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6LeT3N4sAAAAAP7-fF0RQ6NSJyKqgLNUPb_y5o6b" style="margin-bottom: 15px;"></div>
+          <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6LcK-t4sAAAAAB_ADSe-aTMUejCyakz-4Fhj_64o" style="margin-bottom: 15px;"></div>
           
           <button type="submit" class="submit-btn" [disabled]="isSendingEmail || !contactData.name || !contactData.email || !contactData.message">
             <span *ngIf="!isSendingEmail">{{ t.contact.send }}</span>
