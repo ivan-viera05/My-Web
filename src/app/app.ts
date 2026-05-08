@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ElementRef, signal, computed, inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef, signal, computed, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
@@ -13,7 +13,7 @@ import { environment } from '../environments/environment';
   styleUrl: './app.css',
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   // --- Translation Logic ---
   private _currentLang = signal<'es' | 'en'>('es');
   readonly currentLang = computed(() => this._currentLang());
@@ -374,6 +374,27 @@ export class AppComponent implements OnInit {
     }, 100);
   }
 
+  ngAfterViewInit() {
+    this.renderRecaptcha();
+  }
+
+  private renderRecaptcha() {
+    if (typeof (window as any).grecaptcha !== 'undefined' && (window as any).grecaptcha.render) {
+      const container = document.getElementById('recaptcha-container');
+      if (container && !container.innerHTML.trim()) {
+        try {
+          (window as any).grecaptcha.render('recaptcha-container', {
+            'sitekey': '6LeT3N4sAAAAAP7-fF0RQ6NSJyKqgLNUPb_y5o6b'
+          });
+        } catch (e) {
+          console.error('Error al renderizar reCAPTCHA:', e);
+        }
+      }
+    } else {
+      setTimeout(() => this.renderRecaptcha(), 500);
+    }
+  }
+
   updateVisibleCards() {
     const width = window.innerWidth;
     if (width <= 768) this.visibleCards = 1;
@@ -476,6 +497,7 @@ export class AppComponent implements OnInit {
         }
         setTimeout(() => this.emailSentSuccess = false, 5000);
       }, (error) => {
+        console.error('Error exacto de EmailJS:', error);
         this.isSendingEmail = false;
         this.emailSentError = true;
         if (typeof (window as any).grecaptcha !== 'undefined') {
