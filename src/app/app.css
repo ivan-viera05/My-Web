@@ -907,16 +907,7 @@ section {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-image img[src*="logo"],
-.project-image img[src*="icon"],
-.project-image img[src*="channels4"],
-.project-image img[src*="bomberos"],
-.project-image img[src*="LoginAdministrador"],
-.project-image img[src*="Camunda"] {
-  object-fit: contain;
-  padding: 1.5rem;
-  background: white;
-}
+
 
 .project-image img[src*="mirofish"] {
   object-fit: contain;

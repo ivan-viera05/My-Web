@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
       skillCategories: [
         { name: 'Frontend', icon: 'ph ph-browsers', skills: ['HTML', 'CSS', 'Bootstrap', 'Tailwind', 'JavaScript', 'Angular', 'React', 'TypeScript', 'Node JS', 'Windows Form'] },
-        { name: 'Backend', icon: 'ph ph-code-block', skills: ['C#', '.NET', 'Node.js', 'MiroFish'] },
+        { name: 'Backend', icon: 'ph ph-code-block', skills: ['Java', 'Spring Boot', 'C#', '.NET', 'Node.js', 'MiroFish'] },
         { name: 'IA y Ciencia de Datos', icon: 'ph ph-brain', skills: ['TensorFlow', 'RASA IA', 'Power BI', 'LLMs (GPT)', 'n8n'] },
         { name: 'APIs & Arquitectura', icon: 'ph ph-tree-structure', skills: ['APIs REST', 'JWT', 'Swagger', 'Microservicios', 'Arquitectura en capas', 'Arquitectura hexagonal', 'WebSockets', 'Microfrontend'] },
         { name: 'Gestión & DevOps', icon: 'ph ph-gear', skills: ['BPM Camunda', 'BPMN', 'Scrum', 'Git', 'GitHub', 'BitBucket', 'Docker'] },
@@ -77,6 +77,14 @@ export class AppComponent implements OnInit, AfterViewInit {
         { name: 'Portugués', level: 'Básico' }
       ],
       projects: [
+        {
+          title: 'TransactFlow - Motor de Microservicios',
+          description: 'Mantenimiento evolutivo y modificación de un motor de procesos Camunda BPM. Desarrollo de nuevos microservicios en Java y Spring Boot para la orquestación de flujos de trabajo complejos y automatización de procesos empresariales.',
+          image: 'Diagrama-Curso-Arquitectura-de-Microservicios-con-Spring-Boot-y-Spring-Cloud-1.png',
+          images: [{ url: 'Diagrama-Curso-Arquitectura-de-Microservicios-con-Spring-Boot-y-Spring-Cloud-1.png', title: 'Orquestación de Microservicios', description: 'Integración de Camunda BPM con microservicios Java para automatización de procesos.' }],
+          currentImageIndex: 0, link: '#', repo: '#', tags: ['Java', 'Spring Boot', 'Camunda BPM', 'Microservicios', 'BPMN'],
+          results: { efficiency: 'Automatización de Procesos', response: 'Integración Ágil', accuracy: 'Orquestación de Microservicios' }
+        },
         {
           title: 'MiroFish - Entrenamiento IA de Ventas y Soporte',
           description: 'Plataforma de simulación de role-play que utiliza agentes de IA para actuar como "clientes difíciles" o "negociadores agresivos". El personal de ventas puede practicar sus scripts contra una IA con memoria y reacciones humanas, optimizando su desempeño antes de interactuar con clientes reales.',
@@ -179,7 +187,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
       skillCategories: [
         { name: 'Frontend', icon: 'ph ph-browsers', skills: ['HTML', 'CSS', 'Bootstrap', 'Tailwind', 'JavaScript', 'Angular', 'React', 'TypeScript', 'Node JS', 'Windows Form'] },
-        { name: 'Backend', icon: 'ph ph-code-block', skills: ['C#', '.NET', 'Node.js', 'MiroFish'] },
+        { name: 'Backend', icon: 'ph ph-code-block', skills: ['Java', 'Spring Boot', 'C#', '.NET', 'Node.js', 'MiroFish'] },
         { name: 'AI & Data Science', icon: 'ph ph-brain', skills: ['TensorFlow', 'RASA IA', 'Power BI', 'LLMs (GPT)', 'n8n'] },
         { name: 'APIs & Architecture', icon: 'ph ph-tree-structure', skills: ['REST APIs', 'JWT', 'Swagger', 'Microservices', 'Layered Architecture', 'Hexagonal Architecture', 'WebSockets', 'Microfrontend'] },
         { name: 'Management & DevOps', icon: 'ph ph-gear', skills: ['BPM Camunda', 'BPMN', 'Scrum', 'Git', 'GitHub', 'BitBucket', 'Docker'] },
@@ -212,6 +220,14 @@ export class AppComponent implements OnInit, AfterViewInit {
         { name: 'Portuguese', level: 'Basic' }
       ],
       projects: [
+        {
+          title: 'TransactFlow - Microservices Engine',
+          description: 'Evolutionary maintenance and modification of a Camunda BPM process engine. Development of new microservices in Java and Spring Boot for the orchestration of complex workflows and enterprise process automation.',
+          image: 'Diagrama-Curso-Arquitectura-de-Microservicios-con-Spring-Boot-y-Spring-Cloud-1.png',
+          images: [{ url: 'Diagrama-Curso-Arquitectura-de-Microservicios-con-Spring-Boot-y-Spring-Cloud-1.png', title: 'Microservices Orchestration', description: 'Integration of Camunda BPM with Java microservices for process automation.' }],
+          currentImageIndex: 0, link: '#', repo: '#', tags: ['Java', 'Spring Boot', 'Camunda BPM', 'Microservices', 'BPMN'],
+          results: { efficiency: 'Process Automation', response: 'Agile Integration', accuracy: 'Microservices Orchestration' }
+        },
         {
           title: 'MiroFish - Sales Training AI',
           description: 'Advanced Role-Play platform powered by AI for high-performance team training. It simulates complex interactions with real clients to perfect sales scripts and negotiation strategies.',
