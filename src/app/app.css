@@ -1887,7 +1887,19 @@ section {
   }
 
   .contact-content {
-    padding: 2rem;
+    padding: 1.5rem;
+    gap: 2rem;
+    overflow: hidden;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+  }
+
+  .info-item span {
+    word-break: break-word;
+    font-size: 0.9rem;
   }
 
   .section-title h2 {
