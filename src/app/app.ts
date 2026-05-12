@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   allContent: any = {
     es: {
       ui: {
-        nav: { about: 'Sobre Mí', experience: 'Experiencia', skills: 'Habilidades', projects: 'Proyectos', education: 'Educación', contact: 'Contacto', cta: 'Hablemos' },
+        nav: { about: 'Sobre Mí', experience: 'Experiencia', skills: 'Habilidades', projects: 'Proyectos', education: 'Educación', contact: 'Contacto', cta: 'Hablemos', lang: 'Cambiar idioma' },
         hero: { greeting: 'Hola, soy', subtitle: 'Desarrollador Full Stack apasionado por crear soluciones digitales innovadoras y experiencias de usuario excepcionales.', viewProjects: 'Ver Proyectos', experience: 'Experiencia' },
         about: {
           title: 'Sobre Mí', header: 'Construyendo el futuro digital', subtitle: 'Desarrollador Full Stack | Estudiante de Lic. en Tecnologías Digitales',
@@ -35,12 +35,14 @@ export class AppComponent implements OnInit, AfterViewInit {
           ]
         },
         experience: { title: 'Experiencia Laboral' },
-        projects: { title: 'Proyectos Destacados', modal: { metrics: 'Métricas de Rendimiento', efficiency: 'Eficiencia Operativa', responseTime: 'Tiempo de Respuesta', accuracy: 'Precisión de IA', viewDemo: 'Ver Demo', viewCode: 'Código' } },
+        projects: { title: 'Proyectos Destacados', prev: 'Proyecto anterior', next: 'Siguiente proyecto', modal: { metrics: 'Métricas de Rendimiento', efficiency: 'Eficiencia Operativa', responseTime: 'Tiempo de Respuesta', accuracy: 'Precisión de IA', viewDemo: 'Ver Demo', viewCode: 'Código' } },
         skills: { title: 'Habilidades Técnicas' },
         education: { title: 'Educación y Certificaciones', eduHeader: 'Educación', certHeader: 'Certificaciones' },
         contact: { title: 'Contacto', header: '¿Tienes un proyecto en mente?', subtitle: 'Estoy disponible para nuevos desafíos y colaboraciones.', namePlaceholder: 'Nombre', emailPlaceholder: 'Email', messagePlaceholder: 'Mensaje', send: 'Enviar Mensaje' },
         game: { title: 'Un Pequeño Recreo', subtitle: '¡Esquiva los obstáculos para ganar puntos!', start: 'Iniciar Juego', restart: 'Reiniciar', controls: 'Presiona Espacio para saltar' },
-        footer: { copy: 'Diseñado con ❤️ y Angular.' }
+        footer: { copy: 'Diseñado con ❤️ y Angular.' },
+        social: { linkedin: 'Perfil de LinkedIn', github: 'Perfil de GitHub', whatsapp: 'Chat de WhatsApp' },
+        modal: { close: 'Cerrar modal', prev: 'Imagen anterior', next: 'Siguiente imagen' }
       },
       skillCategories: [
         { name: 'Frontend', icon: 'ph ph-browsers', skills: ['HTML', 'CSS', 'Bootstrap', 'Tailwind', 'JavaScript', 'Angular', 'React', 'TypeScript', 'Node JS', 'Windows Form'] },
@@ -90,7 +92,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           description: 'Plataforma de simulación de role-play que utiliza agentes de IA para actuar como "clientes difíciles" o "negociadores agresivos". El personal de ventas puede practicar sus scripts contra una IA con memoria y reacciones humanas, optimizando su desempeño antes de interactuar con clientes reales.',
           image: 'mirofish.jpg',
           images: [
-            { url: 'mirofish.jpg', title: 'Simulador de Negociación Crítica', description: 'Módulo donde los agentes de IA adoptan personalidades desafiantes. La IA recuerda objeciones pasadas del vendedor, forzando un entrenamiento dinámico que mejora la capacidad de respuesta y el manejo de presión.' },
+            { url: 'mirofish-hero.png', title: 'Simulador de Negociación Crítica', description: 'Módulo donde los agentes de IA adoptan personalidades desafiantes. La IA recuerda objeciones pasadas del vendedor, forzando un entrenamiento dinámico que mejora la capacidad de respuesta y el manejo de presión.' },
             { url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800', title: 'Optimización de Cierre de Negocios', description: 'Herramienta diseñada para reducir drásticamente la curva de aprendizaje. Al practicar en un entorno seguro pero realista, los equipos de ventas aumentan su tasa de cierre en operaciones reales mediante el perfeccionamiento de sus scripts.' }
           ],
           currentImageIndex: 0, link: '#', repo: '#', tags: ['Entrenamiento de Ventas', 'IA con Memoria', 'Simulación de Clientes', 'n8n', 'OpenAI'],
@@ -101,14 +103,14 @@ export class AppComponent implements OnInit, AfterViewInit {
           description: 'Sistema integral para la administración de gimnasios, control de membresías y seguimiento de rutinas con interfaz intuitiva y reportes de rendimiento.',
           image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-04-16 at 12.15.01.mp4',
           images: [{ url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-04-16 at 12.15.01.mp4', title: 'Demostración del Sistema', description: 'Video demostrativo de las funcionalidades principales del sistema: gestión de socios, control de pagos, y asignación de rutinas personalizadas. Diseñado para optimizar la administración diaria de un centro deportivo.' }],
-          currentImageIndex: 0, link: '#', repo: 'https://github.com/IvanViera05/FitFlow', tags: ['Angular', '.NET Core', 'SQL Server', 'Video Demo']
+          currentImageIndex: 0, link: 'https://github.com/ivan-viera05/N8N-GymBot', repo: 'https://github.com/ivan-viera05/N8N-GymBot', tags: ['Angular', '.NET Core', 'SQL Server', 'Video Demo']
         },
         {
           title: 'GastroBot AI - Reservas Inteligentes',
           description: 'Asistente inteligente para restaurantes que automatiza la reserva de mesas, consultas de menú y pedidos mediante n8n e integración de APIs.',
           image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-05-06 at 11.23.53.mp4',
           images: [{ url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-05-06 at 11.23.53.mp4', title: 'Automatización de Reservas', description: 'Flujo de trabajo avanzado en n8n que gestiona reservas en tiempo real, verifica disponibilidad mediante APIs de calendario y envía confirmaciones automáticas por WhatsApp, mejorando la eficiencia operativa del restaurante.' }],
-          currentImageIndex: 0, link: '#', repo: '#', tags: ['n8n', 'IA', 'WhatsApp API', 'Restaurante', 'Automatización']
+          currentImageIndex: 0, link: 'https://github.com/ivan-viera05/N8N-RestoBot', repo: 'https://github.com/ivan-viera05/N8N-RestoBot', tags: ['n8n', 'IA', 'WhatsApp API', 'Restaurante', 'Automatización']
         },
         {
           title: 'Agendifly - Agenda Virtual',
@@ -164,7 +166,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     },
     en: {
       ui: {
-        nav: { about: 'About Me', experience: 'Experience', skills: 'Skills', projects: 'Projects', education: 'Education', contact: 'Contact', cta: 'Let\'s Talk' },
+        nav: { about: 'About Me', experience: 'Experience', skills: 'Skills', projects: 'Projects', education: 'Education', contact: 'Contact', cta: 'Let\'s Talk', lang: 'Change language' },
         hero: { greeting: 'Hi, I am', subtitle: 'Full Stack Developer passionate about creating innovative digital solutions and exceptional user experiences.', viewProjects: 'View Projects', experience: 'Experience' },
         about: {
           title: 'About Me', header: 'Building the Digital Future', subtitle: 'Full Stack Developer | Digital Technologies Student',
@@ -178,12 +180,14 @@ export class AppComponent implements OnInit, AfterViewInit {
           ]
         },
         experience: { title: 'Work Experience' },
-        projects: { title: 'Featured Projects', modal: { metrics: 'Performance Metrics', efficiency: 'Operational Efficiency', responseTime: 'Response Time', accuracy: 'AI Accuracy', viewDemo: 'View Demo', viewCode: 'Code' } },
+        projects: { title: 'Featured Projects', prev: 'Previous project', next: 'Next project', modal: { metrics: 'Performance Metrics', efficiency: 'Operational Efficiency', responseTime: 'Response Time', accuracy: 'AI Accuracy', viewDemo: 'View Demo', viewCode: 'Code' } },
         skills: { title: 'Technical Skills' },
         education: { title: 'Education & Certifications', eduHeader: 'Education', certHeader: 'Certifications' },
         contact: { title: 'Contact', header: 'Have a project in mind?', subtitle: 'I am available for new challenges and collaborations.', namePlaceholder: 'Name', emailPlaceholder: 'Email', messagePlaceholder: 'Message', send: 'Send Message' },
         game: { title: 'A Little Break', subtitle: 'Dodge the obstacles to earn points!', start: 'Start Game', restart: 'Restart', controls: 'Press Space to jump' },
-        footer: { copy: 'Designed with ❤️ and Angular.' }
+        footer: { copy: 'Designed with ❤️ and Angular.' },
+        social: { linkedin: 'LinkedIn profile', github: 'GitHub profile', whatsapp: 'WhatsApp chat' },
+        modal: { close: 'Close modal', prev: 'Previous image', next: 'Next image' }
       },
       skillCategories: [
         { name: 'Frontend', icon: 'ph ph-browsers', skills: ['HTML', 'CSS', 'Bootstrap', 'Tailwind', 'JavaScript', 'Angular', 'React', 'TypeScript', 'Node JS', 'Windows Form'] },
@@ -233,7 +237,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           description: 'Advanced Role-Play platform powered by AI for high-performance team training. It simulates complex interactions with real clients to perfect sales scripts and negotiation strategies.',
           image: 'mirofish.jpg',
           images: [
-            { url: 'mirofish.jpg', title: 'Critical Negotiation Simulator', description: 'Module where AI agents adopt challenging personalities. The AI remembers the seller\'s past objections, forcing a dynamic training that improves response capacity and pressure handling.' },
+            { url: 'mirofish-hero.png', title: 'Critical Negotiation Simulator', description: 'Module where AI agents adopt challenging personalities. The AI remembers the seller\'s past objections, forcing a dynamic training that improves response capacity and pressure handling.' },
             { url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800', title: 'Business Closing Optimization', description: 'Tool designed to drastically reduce the learning curve. By practicing in a safe but realistic environment, sales teams increase their closing rate in real operations by perfecting their scripts.' }
           ],
           currentImageIndex: 0, link: '#', repo: '#', tags: ['Sales Training', 'AI with Memory', 'Client Simulation', 'n8n', 'OpenAI'],
@@ -244,14 +248,14 @@ export class AppComponent implements OnInit, AfterViewInit {
           description: 'Integral system for gym administration, membership control, and routine tracking with an intuitive interface and performance reports.',
           image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-04-16 at 12.15.01.mp4',
           images: [{ url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-04-16 at 12.15.01.mp4', title: 'System Demonstration', description: 'Demonstration video of the main system features: member management, payment control, and personalized routine assignment. Designed to optimize the daily administration of a sports center.' }],
-          currentImageIndex: 0, link: '#', repo: 'https://github.com/IvanViera05/FitFlow', tags: ['Angular', '.NET Core', 'SQL Server', 'Video Demo']
+          currentImageIndex: 0, link: 'https://github.com/ivan-viera05/N8N-GymBot', repo: 'https://github.com/ivan-viera05/N8N-GymBot', tags: ['Angular', '.NET Core', 'SQL Server', 'Video Demo']
         },
         {
           title: 'GastroBot AI - Smart Reservations',
           description: 'Smart assistant for restaurants that automates table reservations, menu inquiries, and orders using n8n e integración de APIs.',
           image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-05-06 at 11.23.53.mp4',
           images: [{ url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800', video: 'WhatsApp Video 2026-05-06 at 11.23.53.mp4', title: 'Reservation Automation', description: 'Advanced workflow in n8n that manages reservations in real time, verifies availability through calendar APIs, and sends automatic confirmations via WhatsApp, improving the restaurant\'s operational efficiency.' }],
-          currentImageIndex: 0, link: '#', repo: '#', tags: ['n8n', 'IA', 'WhatsApp API', 'Restaurant', 'Automation']
+          currentImageIndex: 0, link: 'https://github.com/ivan-viera05/N8N-RestoBot', repo: 'https://github.com/ivan-viera05/N8N-RestoBot', tags: ['n8n', 'IA', 'WhatsApp API', 'Restaurant', 'Automation']
         },
         {
           title: 'Agendifly - Virtual Agenda',

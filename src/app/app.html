@@ -15,7 +15,7 @@
       <li><a href="#education" (click)="scrollToSection('education', $event)">{{ t.nav.education }}</a></li>
       <li><a href="#contact" (click)="scrollToSection('contact', $event)">{{ t.nav.contact }}</a></li>
       <li class="lang-switch">
-        <button (click)="toggleLanguage()" class="lang-btn">
+        <button (click)="toggleLanguage()" class="lang-btn" [attr.aria-label]="t.nav.lang">
           <span [class.active]="currentLang() === 'es'">ES</span>
           <span class="separator">|</span>
           <span [class.active]="currentLang() === 'en'">EN</span>
@@ -51,7 +51,7 @@
       <li><a href="#contact" (click)="scrollToSection('contact', $event); closeMobileMenu()"><i class="ph ph-envelope"></i> {{ t.nav.contact }}</a></li>
     </ul>
     <div class="mobile-menu-footer">
-      <button (click)="toggleLanguage()" class="lang-btn-mobile">
+      <button (click)="toggleLanguage()" class="lang-btn-mobile" [attr.aria-label]="t.nav.lang">
         <span [class.active]="currentLang() === 'es'">ES</span>
         <span class="separator">|</span>
         <span [class.active]="currentLang() === 'en'">EN</span>
@@ -90,7 +90,7 @@
       <div class="about-grid">
         <div class="about-image-container reveal">
           <div class="image-wrapper">
-            <img src="/miimagen.png" alt="Ivan Viera" class="profile-img">
+            <img src="/miimagen.png" alt="Ivan Viera" class="profile-img" loading="lazy">
             <div class="image-glow"></div>
             <div class="image-border"></div>
           </div>
@@ -125,10 +125,10 @@
             </div>
           </div>
           <div class="about-actions">
-            <a href="#" class="primary-btn"><i class="ph ph-download-simple"></i> {{ t.about.downloadCV }}</a>
+            <a href="/CV-Ivan--Viera-Dev.pdf" download="CV-Ivan-Viera.pdf" class="primary-btn"><i class="ph ph-download-simple"></i> {{ t.about.downloadCV }}</a>
             <div class="social-links-mini">
-              <a href="https://www.linkedin.com/in/ivan-viera-dev/" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
-              <a href="#" target="_blank"><i class="ph ph-github-logo"></i></a>
+              <a href="https://www.linkedin.com/in/ivanviera/" target="_blank" [attr.aria-label]="t.social.linkedin"><i class="ph ph-linkedin-logo"></i></a>
+              <a href="https://github.com/ivan-viera05" target="_blank" [attr.aria-label]="t.social.github"><i class="ph ph-github-logo"></i></a>
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@
       <div class="projects-carousel-wrapper"
         (touchstart)="onCarouselTouchStart($event)"
         (touchend)="onCarouselTouchEnd($event)">
-        <button class="carousel-btn prev" (click)="prevProjectSlide()">
+        <button class="carousel-btn prev" (click)="prevProjectSlide()" [attr.aria-label]="t.projects.prev">
           <i class="ph ph-caret-left"></i>
         </button>
         <div class="projects-carousel-container">
@@ -190,7 +190,7 @@
               <div class="project-slide" [style.flex]="'0 0 ' + (100 / visibleCards) + '%'">
                 <div class="project-card glass-card reveal" (click)="openProjectModal(project)">
                   <div class="project-image">
-                    <img [src]="project.image" [alt]="project.title">
+                    <img [src]="project.image" [alt]="project.title" loading="lazy">
                     <div class="project-overlay">
                       <span class="view-details">Ver Detalles</span>
                     </div>
@@ -204,7 +204,7 @@
             }
           </div>
         </div>
-        <button class="carousel-btn next" (click)="nextProjectSlide()">
+        <button class="carousel-btn next" (click)="nextProjectSlide()" [attr.aria-label]="t.projects.next">
           <i class="ph ph-caret-right"></i>
         </button>
       </div>
@@ -215,6 +215,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Skills Section -->
   <section id="skills" class="skills">
@@ -355,35 +356,35 @@
   <div class="container">
     <p>&copy; 2026 Ivan Viera. {{ t.footer.copy }}</p>
     <div class="social-links">
-      <a href="https://github.com/ivan-viera05" target="_blank"><i class="ph ph-github-logo"></i></a>
-      <a href="https://www.linkedin.com/in/ivanviera/" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+      <a href="https://github.com/ivan-viera05" target="_blank" [attr.aria-label]="t.social.github"><i class="ph ph-github-logo"></i></a>
+      <a href="https://www.linkedin.com/in/ivanviera/" target="_blank" [attr.aria-label]="t.social.linkedin"><i class="ph ph-linkedin-logo"></i></a>
     </div>
   </div>
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/5491159891620" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/5491159891620" class="whatsapp-float" target="_blank" [attr.aria-label]="t.social.whatsapp">
   <i class="ph ph-whatsapp-logo"></i>
 </a>
 
 <!-- Project Modal -->
 <div class="project-modal" [class.open]="isModalOpen" *ngIf="selectedProject" (click)="closeProjectModal()">
   <div class="modal-content glass-card" (click)="$event.stopPropagation()">
-    <button class="modal-close" (click)="closeProjectModal()">
+    <button class="modal-close" (click)="closeProjectModal()" [attr.aria-label]="t.modal.close">
       <i class="ph ph-x"></i>
     </button>
     <div class="modal-grid">
       <div class="modal-image-section">
         <div class="modal-main-image">
           <video *ngIf="selectedProject.images[selectedProject.currentImageIndex].video" [src]="selectedProject.images[selectedProject.currentImageIndex].video" class="modal-video" controls autoplay muted loop></video>
-          <img *ngIf="!selectedProject.images[selectedProject.currentImageIndex].video" [src]="selectedProject.images[selectedProject.currentImageIndex].url" alt="Project Image">
-          <button class="modal-nav-btn prev" (click)="prevImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1"><i class="ph ph-caret-left"></i></button>
-          <button class="modal-nav-btn next" (click)="nextImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1"><i class="ph ph-caret-right"></i></button>
+          <img *ngIf="!selectedProject.images[selectedProject.currentImageIndex].video" [src]="selectedProject.images[selectedProject.currentImageIndex].url" [alt]="selectedProject.title" loading="lazy">
+          <button class="modal-nav-btn prev" (click)="prevImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1" [attr.aria-label]="t.modal.prev"><i class="ph ph-caret-left"></i></button>
+          <button class="modal-nav-btn next" (click)="nextImage(selectedProject, $event)" *ngIf="selectedProject.images.length > 1" [attr.aria-label]="t.modal.next"><i class="ph ph-caret-right"></i></button>
         </div>
         <div class="modal-thumbnails" *ngIf="selectedProject.images.length > 1">
           @for (img of selectedProject.images; track $index) {
             <div class="thumbnail" [class.active]="$index === selectedProject.currentImageIndex" (click)="selectedProject.currentImageIndex = $index">
-              <img [src]="img.url || selectedProject.image" alt="Thumbnail">
+              <img [src]="img.url || selectedProject.image" [alt]="selectedProject.title + ' thumbnail ' + ($index + 1)" loading="lazy">
             </div>
           }
         </div>

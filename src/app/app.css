@@ -3,7 +3,7 @@
   --accent-primary: #00e5ff;
   --accent-secondary: #7000ff;
   --text-primary: #ffffff;
-  --text-secondary: #b0b0d0;
+  --text-secondary: #c0c0e0;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -717,6 +717,7 @@ section {
   line-height: 1.7;
 }
 
+
 /* Bento Skills */
 .bento-skills {
   display: grid;
@@ -904,19 +905,43 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
-
-
-.project-image img[src*="mirofish"] {
+/* Imágenes que deben mostrarse completas (logos, diagramas) */
+.project-image img[src*="channels4_profile"],
+.project-image img[src*="Camunda"],
+.project-image img[src*="mirofish"],
+.project-image img[src*="bomberos"] {
   object-fit: contain;
-  padding: 0;
-  background: white;
+  padding: 1.2rem;
+  background: #ffffff;
+}
+
+.project-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(3, 0, 20, 0.7), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.1) rotate(-2deg);
+  transform: scale(1.08);
+}
+
+/* Sin zoom agresivo en imágenes contain */
+.project-card:hover .project-image img[src*="channels4_profile"],
+.project-card:hover .project-image img[src*="Camunda"],
+.project-card:hover .project-image img[src*="mirofish"],
+.project-card:hover .project-image img[src*="bomberos"] {
+  transform: scale(1.03);
 }
 
 .project-overlay {
